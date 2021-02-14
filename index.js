@@ -8,6 +8,7 @@ const cors =require('cors')
 const path=require('path')
 const { graphqlHTTP }=require('express-graphql')
 const schema = require('./schema/schema')
+const db = require('./config/db')
 
 //  middlewares   ,require('./routes/router')
 app.use(express.json())
@@ -17,6 +18,7 @@ app.use('/graphql',graphqlHTTP({
     schema ,
     graphiql: true,
 }))
+  
 
 if (process.env.NODE_ENV === 'production') {
     app.use(path.join(__dirname,"/client/build"))
